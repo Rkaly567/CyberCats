@@ -1,0 +1,17 @@
+import glob
+from setuptools import setup, find_packages
+
+setup(
+    # this is the file that is run when you start the game from the command line.
+    entry_points={"console_scripts": ["my_game = main:main"]},
+  package_dir={'': 'src'},
+  packages=find_packages(where='src'),
+    # data files - these are the non-python files, like images and sounds
+    data_files=[
+        ("sprites", glob.glob("./sprites/*.json")),
+        ("sfx", glob.glob("./sfx/*.ogg") + glob.glob("./sfx/*.wav")),
+        ("levels", glob.glob("./levels/*.json")),
+        ("img", glob.glob("./img/*.gif") + glob.glob("./img/*.png")),
+        ("", ["settings.json"]),
+    ],
+)
